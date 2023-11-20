@@ -70,4 +70,6 @@ class RegisterUserTest(TestCase):
         button = self.driver.find_element(By.XPATH, "//button[text()='Sign In']")
         time.sleep(1)
         button.click()
-        time.sleep(2)
+        time.sleep(1)
+
+        logged_text = self.driver.find_element(By.ID, "welcome")

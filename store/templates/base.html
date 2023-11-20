@@ -22,7 +22,7 @@
             <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
             <a class="nav-item nav-link" href="#">Products</a>
             {% if user.is_authenticated %} <!-- Login option -->
-                <a class="nav-item nav-link" href="{% url 'register' %}">Welcome, {{ user.username }}!</a>
+                <a class="nav-item nav-link" id="welcome" href="{% url 'register' %}">Welcome, {{ user.username }}!</a>
                 <a class="nav-item nav-link" href="{% url 'logoff' %}">Logout</a>
             {% else %}
                 <a class="nav-item nav-link" href="{% url 'register' %}">Login</a> <!-- Login option -->
