@@ -1,0 +1,59 @@
+<!-- base.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>{% block title %}Base HTML{% endblock%}</title>
+    <!-- Add your custom styles here if needed -->
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="{% url 'index' %}">
+            <img src="https://iili.io/JCS78FI.png" id="logo" class="card-img-top" alt="Product Image">
+        </a>
+        <div class="navbar-nav ml-auto">
+            <a class="nav-item nav-link" href="{% url 'index' %}">Home</a>
+            <a class="nav-item nav-link" href="#">Products</a>
+            {% if user.is_authenticated %} <!-- Login option -->
+                <a class="nav-item nav-link" href="{% url 'register' %}">Welcome, {{ user.username }}!</a>
+                <a class="nav-item nav-link" href="{% url 'logoff' %}">Logout</a>
+            {% else %}
+                <a class="nav-item nav-link" href="{% url 'register' %}">Login</a> <!-- Login option -->
+            {% endif %}
+            <!-- Add more navigation links as needed -->
+        </div>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <a class="nav-item nav-link" href="#">
+            <i class="fas fa-shopping-cart"></i> Cart
+        </a>
+    </div>
+</nav>
+
+<!-- Main Content Section -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+<!-- Footer -->
+<footer class="bg-light text-center py-3">
+    <p>&copy; 2023 Big Adventure Store. All rights reserved.</p>
+</footer>
+
+<!-- Bootstrap JS and Popper.js (required for Bootstrap components) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<!-- Font Awesome (for icons) -->
+<script src="https://kit.fontawesome.com/your-font-awesome-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>

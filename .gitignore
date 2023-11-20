@@ -1,0 +1,14 @@
+.env
+.env_test
+__pycache__
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+.vscode
+*.psql
+*.mo
+local_settings.py
+.pytest_cache
+.idea
