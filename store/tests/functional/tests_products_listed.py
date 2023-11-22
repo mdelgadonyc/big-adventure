@@ -1,3 +1,5 @@
+import time
+
 from django.test import TestCase
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -21,11 +23,10 @@ class SiteProductListingTest(TestCase):
         self.driver.get(server_url)
 
         detail_link = self.driver.find_element(By.LINK_TEXT, 'View Details')
-
-        # Perform actions on the element if needed
         detail_link.click()
 
-        # TODO: Verify that the product details are displayed correctly.
+        modal = self.driver.find_element(By.CLASS_NAME, "modal-open")
+        price = self.driver.find_element(By.CLASS_NAME, "price")
 
-
-
+        close_button = self.driver.find_element(By.XPATH, "//button[text()='Close']")
+        close_button.click()
