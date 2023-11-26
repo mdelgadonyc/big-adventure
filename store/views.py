@@ -7,10 +7,31 @@ from django.contrib.auth import authenticate, login, logout
 from psycopg.errors import UniqueViolation
 
 
+def increase_count(request):
+    count = get_count(request)
+    if count is None:
+        request.session['count'] = 1
+    else:
+        request.session['count'] += 1
+    return request.session['count']
+
+
+def get_count(request):
+    return request.session.get('count')
+
+
+def update_cart_count(request):
+    if request.method == "POST":
+        form_data = request.POST
+        print("Django view function update_cart_count has been triggered")
+    # response_data = {'message': get_count(request)}
+    return HttpResponse(increase_count(request))
+
+
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
-    # return HttpResponse("Hello, world!")
+    context = {'count': get_count(request)}
+    return render(request, 'index.html', context)
 
 
 def register(request):
@@ -30,8 +51,8 @@ def register(request):
             messages.error(request, "This account already exist.")
             return redirect('register')
 
-    return render(request, 'register.html')
-    # return HttpResponse("Hello, world!")
+    context = {'count': get_count(request)}
+    return render(request, 'register.html', context)
 
 
 def signin(request):

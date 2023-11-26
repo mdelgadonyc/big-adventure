@@ -15,6 +15,25 @@ body {
   height: auto;
 }
 
+.cart-container {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-icon {
+}
+
+#cart-count {
+    position: absolute;
+    top: -5px;
+    right:-2px;
+    background-color: purple;
+    color: white;
+    border-radius: 50%; /* Make it a circle */
+    padding: 0px 7px;
+    font-size: 13px;
+}
+
 .messages .error {
     color:red;
 }

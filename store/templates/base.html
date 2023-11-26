@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block script %}Insert JS scripts{% endblock %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <title>{% block title %}Base HTML{% endblock%}</title>
@@ -33,10 +34,17 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <a class="nav-item nav-link" href="#">
-            <i class="fas fa-shopping-cart"></i> Cart
-        </a>
+<!--        <a class="nav-item nav-link" href="#"></a>-->
     </div>
+            <div class="cart-container">
+            <div class="fas fa-shopping-cart cart-icon"><img src="{% static 'images/cart.png' %}">
+                {% if count %} <!-- Login option -->
+                <div id="cart-count">{{ count }}</div>
+            {% else %}
+                <div id="cart-count"></div>
+            {% endif %}
+            </div>
+        </div>
 </nav>
 
 <!-- Main Content Section -->
